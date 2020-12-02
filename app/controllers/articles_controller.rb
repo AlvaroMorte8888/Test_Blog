@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   
+  def show
+    @article = Article.find(params[:id])
+  end  
+  
   def new
     
   end
@@ -11,9 +15,9 @@ class ArticlesController < ApplicationController
     @article.save #ответственен за сохранение модели в базу данных.
     redirect_to @article  
   end
-  
+
   private
-    def article_params
-      params.require(:article).permit(:titel, :text)
-    end  
+  def article_params
+    params.require(:article).permit(:title, :text)
+  end  
 end
