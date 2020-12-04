@@ -16,8 +16,11 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)#Rails может быть инициализирована с помощью соответствующих атрибутов, 
     #которые будут автоматически привязаны к соответствующим столбцам базы данных. params[:article]содержит интересующие нас атрибуты
     
-    @article.save #ответственен за сохранение модели в базу данных.
-    redirect_to @article  
+    if @article.save #ответственен за сохранение модели в базу данных.
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
   private
