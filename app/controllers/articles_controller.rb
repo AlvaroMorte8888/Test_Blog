@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   end
 
 
+
   def create # сохраняет статью в БД
     @article = Article.new(article_params)#Rails может быть инициализирована с помощью соответствующих атрибутов, 
     #которые будут автоматически привязаны к соответствующим столбцам базы данных. params[:article]содержит интересующие нас атрибуты
@@ -28,6 +29,17 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       render 'new'
+    end
+  end
+
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render 'edit'
     end
   end
 
