@@ -4,13 +4,20 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+
   def new
     @article = Article.new
   end  
 
+
   def show
     @article = Article.find(params[:id])
   end
+
 
   def create # сохраняет статью в БД
     @article = Article.new(article_params)#Rails может быть инициализирована с помощью соответствующих атрибутов, 
@@ -22,6 +29,7 @@ class ArticlesController < ApplicationController
       render 'new'
     end
   end
+
 
   private
   def article_params
