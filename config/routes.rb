@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   delete  '/article/[:id]', to: "articles#destroy"
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 end
