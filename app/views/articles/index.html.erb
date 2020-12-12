@@ -8,7 +8,6 @@
   </tr>
 
   <% @articles.each do |article| %>
-    <% unless article.archived? %>
       <tr>
         <td><%= article.title %></td>
         <td><%= article.text %></td>
@@ -18,7 +17,6 @@
                 method: :delete, 
                 data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end%>
   <% end %>
 </table>
 
